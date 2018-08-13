@@ -1,0 +1,26 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <h1>Add a new user</h1>
+        <form action="/users/create" method="POST">
+            {% csrf_token %}
+            <h2>First Name:</h2>
+            <input type="text" name="first_name" value="{{request.session.first_name}}">
+            <h2>Last Name:</h2>
+            <input type="text" name="last_name" value="{{request.session.last_name}}">
+            <h2>Email:</h2>
+            <input type="email" name="email" value="{{request.session.email}}">
+            <button style="display: block; margin-top: 10px;">Create</button>
+        </form>
+        <a href ="/users">Go back</a>
+    </body>
+</html>

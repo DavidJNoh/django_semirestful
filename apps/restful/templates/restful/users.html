@@ -1,0 +1,21 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <h1>User {{dank.id}}</h1>
+        <p>Full Name: {{dank.first_name}} {{dank.last_name}}</p>
+        <p>Email: {{dank.email}}</p>
+        <p>Created at: {{dank.created_at}}</p>
+
+        <a href= "/users/edit/{{dank.id}}">Edit</a> | <a href="/users/delete">Delete</a>
+
+    </body>
+</html>
